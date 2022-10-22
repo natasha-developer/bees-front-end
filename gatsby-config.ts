@@ -12,4 +12,18 @@ const config: GatsbyConfig = {
   plugins: ["gatsby-plugin-sass"]
 };
 
+module.exports = {
+  plugins: [
+      {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'BEES FrontEnd Challenge',
+        short_name: 'BEES',
+        start_url: '/',
+        icon: 'src/images/bee-logo.png',
+      },
+    }
+  ],
+}
+
 export default config;

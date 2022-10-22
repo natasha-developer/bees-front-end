@@ -14,7 +14,7 @@ const config: GatsbyConfig = {
 
 module.exports = {
   plugins: [
-      {
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'BEES FrontEnd Challenge',
@@ -22,7 +22,17 @@ module.exports = {
         start_url: '/',
         icon: 'src/images/bee-logo.png',
       },
-    }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images/`,
+      },
+    },
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
   ],
 }
 

@@ -1,0 +1,36 @@
+@import '../resets/reset.scss';
+@import '../variables.scss';
+
+main {
+  font-family: $base-fontFamily;
+  background-color: $base-color;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .gatsby-image-wrapper {
+    position: fixed;
+    height: inherit;
+    width: inherit;
+    top: unset;
+    bottom: 1rem;
+    left: 2rem;
+
+    @media screen and (max-width: 768px) {
+      width: 150px !important;
+      height: 150px !important;
+      bottom: 3rem;
+      left: 0;
+      right: 0;
+      margin: auto;
+
+      img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+}

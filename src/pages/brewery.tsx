@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import getBreweries from "../hooks/useBreweries";
 import type { HeadFC } from "gatsby";
 
 type Props = {
@@ -14,6 +15,12 @@ const Brewery = ({
     state: { username },
   },
 }: Props) => {
+  const [breweries, setBreweries] = useState([]);
+
+  useEffect(() => {
+    getBreweries(setBreweries);
+  }, []);
+
   return <p>{username}</p>;
 };
 

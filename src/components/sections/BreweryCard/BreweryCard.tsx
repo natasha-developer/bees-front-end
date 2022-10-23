@@ -1,6 +1,6 @@
-import { Link } from "gatsby";
-import React from "react";
-import { Trash, Graph, Location, Phone, Plus } from "../../icons";
+import React, { useRef, useState } from "react";
+import { Check, Trash, Graph, Location, Phone, Plus } from "../../icons";
+import BreweryTag from "./BreweryTag";
 
 import "./styles.scss";
 
@@ -25,9 +25,16 @@ const BreweryCard = ({
   postal_code,
   phone,
 }: Props) => {
+  const cardRef = useRef<HTMLElement>(null);
+  const [toggleInput, setToggleInput] = useState<boolean>(false);
+  const [tagList, setTagList] = useState<Array<unknown>>([]);
+  const [inputValue, setInputValue] = useState<string>("");
+
   return (
-    <article>
-      <Trash />
+    <article ref={cardRef}>
+      <button onClick={() => cardRef.current?.remove()}>
+        <Trash />
+      </button>
       <h1>{name}</h1>
       <p>
         {street}
@@ -38,33 +45,46 @@ const BreweryCard = ({
         </span>
       </p>
       <div>
-        {brewery_type && (
-          <span>
-            <Graph />
-            {brewery_type}
-          </span>
-        )}
-        {postal_code && (
-          <span>
-            <Location />
-            {postal_code}
-          </span>
-        )}
-        {phone && (
-          <span>
-            <Phone />
-            {phone}
-          </span>
-        )}
-        <button
-          type="button"
-          onClick={() => {
-            return;
-          }}
-        >
-          <Plus />
-          Add More
-        </button>
+        <>
+          <BreweryTag tag={brewery_type} icon={<Graph />} />
+          <BreweryTag tag={postal_code} icon={<Location />} />
+          <BreweryTag tag={phone} icon={<Phone />} />
+          {tagList}
+          <button type="button" onClick={() => setToggleInput(true)}>
+            {toggleInput ? (
+              <>
+                <Check />
+                <input
+                  autoFocus
+                  className="tag-input"
+                  value={inputValue}
+                  onChange={(event) => setInputValue(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Escape") {
+                      setInputValue("");
+                      setToggleInput(false);
+                    }
+                    if (event.key === "Enter" && inputValue !== "") {
+                      setTagList([
+                        ...tagList,
+                        <BreweryTag
+                          key={`Tag-${inputValue}`}
+                          tag={inputValue}
+                        />,
+                      ]);
+                      setInputValue("");
+                      setToggleInput(false);
+                    }
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                <Plus /> Add More
+              </>
+            )}
+          </button>
+        </>
       </div>
     </article>
   );

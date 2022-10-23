@@ -10,6 +10,13 @@ article {
   padding: 1.25rem;
   position: relative;
 
+  > button {
+    border: none;
+    background: none;
+    height: 0;
+    width: 0;
+  }
+
   svg {
     position: absolute;
     top: 1rem;
@@ -61,6 +68,11 @@ article {
 
     button {
       cursor: pointer;
+      max-width: 50%;
+
+      input {
+      max-width: 120px;
+      }
     }
   }
 

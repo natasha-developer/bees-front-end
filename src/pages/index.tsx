@@ -7,7 +7,7 @@ import "../styles/pages/index.scss";
 
 const IndexPage = () => {
   return (
-    <main>
+    <main className="index-main-container">
       <InputText />
       <StaticImage
         src="../images/bee-logo.png"

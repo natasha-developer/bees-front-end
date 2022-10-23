@@ -4,6 +4,7 @@ import type { HeadFC } from "gatsby";
 import Header from "../components/sections/Header";
 
 import "../styles/pages/breweries.scss";
+import BreweryCard from "../components/sections/BreweryCard";
 
 type Props = {
   location: {
@@ -11,6 +12,17 @@ type Props = {
       username: string;
     };
   };
+};
+
+type breweryProps = {
+  name?: string;
+  street?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  brewery_type?: string;
+  postal_code?: string;
+  phone?: string;
 };
 
 const Brewery = ({
@@ -27,7 +39,14 @@ const Brewery = ({
   return (
     <>
       <Header username={username} />
-      <main className="breweries-main-container"></main>
+      <main className="breweries-main-container">
+        {breweries.map(
+          (brewery: breweryProps, index: number) =>
+            brewery.name && (
+              <BreweryCard key={`breweryCard-${index}`} {...brewery} />
+            )
+        )}
+      </main>
     </>
   );
 };

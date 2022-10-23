@@ -1,0 +1,71 @@
+@import '../../../styles/variables.scss';
+
+article {
+  width: 100%;
+  border: 1px solid #000000;
+  border-radius: 4px;
+
+  display:grid;
+  grid-gap: 1.875rem;
+  padding: 1.25rem;
+  position: relative;
+
+  svg {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+  }
+
+  h1 {
+    color: $title-color;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    max-width: 90%;
+  }
+
+  p {
+    display: flex;
+    flex-direction: column;
+    color: $address-color;
+    line-height: 1.625rem;
+  }
+
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 185px;
+    gap: 1.875rem;
+
+
+    span, button {
+      border: none;
+      font-size: 1rem;
+      background-color: $base-color;
+      border-radius: 99px;
+      padding: 0.75rem;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+
+      svg {
+        position: relative;
+        top: unset;
+        right: unset;
+        cursor: unset;
+        padding-right: 0.75rem;
+      }
+    }
+
+    button {
+      cursor: pointer;
+    }
+  }
+
+  @media (min-width: 768px) {
+    max-width: 382px;
+    padding: 1.875rem 1.625rem;
+  }
+}

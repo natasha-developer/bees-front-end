@@ -7,9 +7,9 @@ import "../styles/pages/breweries.scss";
 import BreweryCard from "../components/sections/BreweryCard";
 
 type Props = {
-  location: {
-    state: {
-      username: string;
+  location?: {
+    state?: {
+      username?: string;
     };
   };
 };
@@ -25,11 +25,7 @@ type breweryProps = {
   phone?: string;
 };
 
-const Brewery = ({
-  location: {
-    state: { username },
-  },
-}: Props) => {
+const Brewery = (props: Props) => {
   const [breweries, setBreweries] = useState([]);
 
   useEffect(() => {
@@ -38,7 +34,7 @@ const Brewery = ({
 
   return (
     <>
-      <Header username={username} />
+      <Header username={props?.location?.state?.username ?? ""} />
       <main className="breweries-main-container">
         {breweries.map(
           (brewery: breweryProps, index: number) =>

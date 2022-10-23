@@ -41,7 +41,7 @@ const InputText = () => {
           <label htmlFor="age-check">Are you older than 18 years old?</label>
         </div>
         <Link
-          to="/brewery"
+          to="/breweries"
           type="button"
           role="button"
           state={{ username }}

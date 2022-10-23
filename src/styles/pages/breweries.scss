@@ -1,0 +1,15 @@
+@import '../resets/reset.scss';
+@import '../variables.scss';
+
+header {
+  box-sizing: border-box;
+  background-color: $base-color;
+  height: 72px;
+  padding: 1rem 2.5rem 1rem 1.25rem;
+  font-family: $base-fontFamily;
+}
+
+.breweries-main-container {
+  background-color: #FFF;
+  font-family: $base-fontFamily;
+}

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import getBreweries from "../hooks/useBreweries";
 import type { HeadFC } from "gatsby";
+import Header from "../components/sections/Header";
+
+import "../styles/pages/breweries.scss";
 
 type Props = {
   location: {
@@ -21,7 +24,12 @@ const Brewery = ({
     getBreweries(setBreweries);
   }, []);
 
-  return <p>{username}</p>;
+  return (
+    <>
+      <Header username={username} />
+      <main className="breweries-main-container"></main>
+    </>
+  );
 };
 
 export const Head: HeadFC = () => <title>BEES Front-End Challenge</title>;

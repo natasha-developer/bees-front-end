@@ -1,54 +1,94 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
+<a href="https://github.com/natasha-developer/bees-front-end">
+  <img alt="BEES" src="https://i.ibb.co/s5VK62v/1610048597408.jpg" width="1100" />
+</a>
 <h1 align="center">
-  Gatsby minimal TypeScript starter
+  BEES Front-End Challenge
 </h1>
 
-## 🚀 Quick start
+## 🐝 Quick start
 
-1.  **Create a Gatsby site.**
+1. Clone this repo into your machine
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+   ```shell
+   git clone https://github.com/natasha-developer/bees-front-end.git
+   ```
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby
-    ```
+2. Install dependencies with yarn or npm
 
-2.  **Start developing.**
+   ```shell
+   cd bees-front-end
+   yarn
+   ```
 
-    Navigate into your new site’s directory and start it up.
+   ```shell
+   cd bees-front-end
+   npm install
+   ```
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+3. Start local server
 
-3.  **Open the code and start customizing!**
+   ```shell
+   yarn start
+   ```
 
-    Your site is now running at http://localhost:8000!
+   ```shell
+   npm start
+   ```
 
-    Edit `src/pages/index.tsx` to see your site update in real-time!
+The project is now running at http://localhost:8000!
 
-4.  **Learn more**
+## 🔧 Tools and Technologies
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+- [Gatsby](https://www.gatsbyjs.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Axios](https://axios-http.com/ptbr/docs/intro)
+- [SASS](https://sass-lang.com/)
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+## 📁 Folder Structure
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+All code is inside the src folder. It is also divided into subfolders, as described below:
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+- `src/api`: this folder contains requests to external libraries (aka clients).
+  It has the advantage of being able to receive NodeJS code, since it runs server side. It also prevents CORS errors on APIs that don't allow client side requests.
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+- `src/components`: this holds all react components, divided in:
 
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+  - `.../icons`: components used to render svg icons
 
-## 🚀 Quick start (Gatsby Cloud)
+  - `.../sections`: usually these are more complex components that occupy a whole slice on the webpage
 
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
+  - `.../utils`: logic files used to treat data
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+- `src/hooks`: contains React custom hooks
+
+- `src/images`: holds static image files.
+
+- `src/pages`: is responsible for website routing and HTML files creation during build.
+
+- `src/styles`: contains global SASS styling files.
+
+## ⚙ How does it work?
+
+The index page's main component is **InputText**, which is a form containing a text name input that only accepts alphabetic characters, a checkbox input to verify min age and a link button that triggers an API request and redirects to the breweries list page - this button is only enabled if the other two inputs are filled, to achieve this result there is a validation using states that return boolean values to ensure the fields are not empty.
+
+![Desktop index page](https://user-images.githubusercontent.com/69371184/197632368-1643ea98-720c-45a2-9a5e-32690e0fe526.png)
+
+The breweries page has two main components:
+
+- **Header**: containing a 'go back' button and the user's name - that was inserted on the previous page and passed to the current one using a state prop.
+  If the user navigates directly to the breweries page, without providing name information on the first screen, the name field will be blank on the header component.
+
+- **BreweryCard**: An info card for each brewery returned by the API's request, that has a 'delete' button and information such as name, address and some tags containing type of brewery, postal code and phone number. If the API returns null data to any field, the information / empty tag will not be rendered.
+  These tags are not editable, but there is the option to add more tags to a card by clicking on the 'add more' tag. This action will display a text input for the user to name the new item, and pressing Enter will add the customized tag to the card.
+  It is possible to generate as many new tags as you wish.
+
+![Desktop breweries page](https://user-images.githubusercontent.com/69371184/197632544-2472ba47-9924-4f7f-8c24-b852f6e19983.png)
+
+### 📱 Responsivity
+
+Both pages have a responsive layout for mobile and desktop devices, using media queries to offer the best user experience regardless of screen dimension.
+
+<div align="center">
+  <img alt="Mobile index page" src="https://user-images.githubusercontent.com/69371184/197633916-e87044c2-c98b-4664-b54b-9385f3ea4cba.png" />
+  <img alt="Mobile breweries page" src="https://user-images.githubusercontent.com/69371184/197634032-1c345323-6e20-45a7-bdaa-538ce9cf6cb1.png" />
+</div>

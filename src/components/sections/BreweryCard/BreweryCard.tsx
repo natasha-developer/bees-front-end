@@ -30,6 +30,13 @@ const BreweryCard = ({
   const [tagList, setTagList] = useState<Array<unknown>>([]);
   const [inputValue, setInputValue] = useState<string>("");
 
+  const handleAddTag = () => {
+    setTagList([
+      ...tagList,
+      <BreweryTag key={`Tag-${inputValue}`} tag={inputValue} />,
+    ]);
+  };
+
   return (
     <article ref={cardRef}>
       <button onClick={() => cardRef.current?.remove()}>
@@ -53,7 +60,13 @@ const BreweryCard = ({
           <button type="button" onClick={() => setToggleInput(true)}>
             {toggleInput ? (
               <>
-                <Check />
+                <Check
+                  onClick={() => {
+                    handleAddTag();
+                    setInputValue("");
+                    setToggleInput(false);
+                  }}
+                />
                 <input
                   autoFocus
                   className="tag-input"
@@ -65,13 +78,7 @@ const BreweryCard = ({
                       setToggleInput(false);
                     }
                     if (event.key === "Enter" && inputValue !== "") {
-                      setTagList([
-                        ...tagList,
-                        <BreweryTag
-                          key={`Tag-${inputValue}`}
-                          tag={inputValue}
-                        />,
-                      ]);
+                      handleAddTag();
                       setInputValue("");
                       setToggleInput(false);
                     }

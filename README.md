@@ -43,6 +43,7 @@ The project is now running at http://localhost:8000!
 - [TypeScript](https://www.typescriptlang.org/)
 - [Axios](https://axios-http.com/ptbr/docs/intro)
 - [SASS](https://sass-lang.com/)
+- [Cypress](https://www.cypress.io/)
 
 ## 📁 Folder Structure
 
@@ -92,3 +93,28 @@ Both pages have a responsive layout for mobile and desktop devices, using media 
   <img alt="Mobile index page" src="https://user-images.githubusercontent.com/69371184/197633916-e87044c2-c98b-4664-b54b-9385f3ea4cba.png" />
   <img alt="Mobile breweries page" src="https://user-images.githubusercontent.com/69371184/197634032-1c345323-6e20-45a7-bdaa-538ce9cf6cb1.png" />
 </div>
+
+## 🧩 End-To-End Tests
+
+This projects uses Cypress e2e tests to simulate the user's journey in real-case scenarios and guarantee that the application flow is behaving as expected from beginning to end.
+
+The workflows being validated by tests are:
+
+- Access homepage and test if the button is not clickable until all inputs are filled and checked
+- Test if breweries page is accessible from homepage
+- Test if breweries page content is rendered
+- Test if Brewery Card Tag works
+- Test if Brewery Card delete button works
+- Test if Header Go Back button works
+
+### How to run?
+
+1. With localhost running, start the tests on another terminal.
+
+```shell
+yarn cypress:open
+```
+
+2. A window with Cypress options will open, select E2E Testing and desired browser.
+
+3. This will open a new window on the chosen browser, click `localhost.cy.ts` and tests will begin.

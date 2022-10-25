@@ -44,7 +44,7 @@ describe('Access homepage and test if the button is not clickable until all inpu
   })
 })
 
-describe('Test if breweries page is accessable from homepage', () => {
+describe('Test if breweries page is accessible from homepage', () => {
   it('Should click on Enter button', () => {
     cy.get('a').click()
   })

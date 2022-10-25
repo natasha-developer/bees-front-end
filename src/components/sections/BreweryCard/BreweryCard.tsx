@@ -35,11 +35,14 @@ const BreweryCard = ({
       ...tagList,
       <BreweryTag key={`Tag-${inputValue}`} tag={inputValue} />,
     ]);
+
+    setInputValue("");
+    setToggleInput(false);
   };
 
   return (
     <article ref={cardRef}>
-      <button onClick={() => cardRef.current?.remove()}>
+      <button className="trash-icon" onClick={() => cardRef.current?.remove()}>
         <Trash />
       </button>
       <h1>{name}</h1>
@@ -57,16 +60,13 @@ const BreweryCard = ({
           <BreweryTag tag={postal_code} icon={<Location />} />
           <BreweryTag tag={phone} icon={<Phone />} />
           {tagList}
-          <button type="button" onClick={() => setToggleInput(true)}>
+          <button
+            type="button"
+            onClick={() => !toggleInput && setToggleInput(true)}
+          >
             {toggleInput ? (
               <>
-                <Check
-                  onClick={() => {
-                    handleAddTag();
-                    setInputValue("");
-                    setToggleInput(false);
-                  }}
-                />
+                <Check onClick={handleAddTag} />
                 <input
                   autoFocus
                   className="tag-input"
@@ -79,8 +79,6 @@ const BreweryCard = ({
                     }
                     if (event.key === "Enter" && inputValue !== "") {
                       handleAddTag();
-                      setInputValue("");
-                      setToggleInput(false);
                     }
                   }}
                 />
